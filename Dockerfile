@@ -12,8 +12,7 @@ RUN \
   cd /usr/local && \
   curl -fLO https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz && \
   tar --strip-components 1 --exclude share -xzf node-v$NODE_VERSION-linux-x64.tar.gz && \
-  rm node-v$NODE_VERSION-linux-x64.tar.gz && \
-  rm -r share/man
+  rm node-v$NODE_VERSION-linux-x64.tar.gz
 
 # Install node.js
 ENV KUBERNETES_SECRET_ENV_VERSION=0.0.1-rc0
@@ -31,7 +30,7 @@ ONBUILD WORKDIR /usr/src/app
 ONBUILD COPY Gemfile /usr/src/app/
 ONBUILD COPY Gemfile.lock /usr/src/app/
 ONBUILD COPY vendor /usr/src/app/vendor
-ONBUILD RUN bundle install --local
+ONBUILD RUN sh -c 'bundle install --local --jobs `nproc`'
 
 # Copy the rest of the application source
 ONBUILD COPY . /usr/src/app
