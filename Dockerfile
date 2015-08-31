@@ -30,7 +30,7 @@ ONBUILD WORKDIR /usr/src/app
 ONBUILD COPY Gemfile /usr/src/app/
 ONBUILD COPY Gemfile.lock /usr/src/app/
 ONBUILD COPY vendor /usr/src/app/vendor
-ONBUILD RUN sh -c 'bundle install --local --jobs `nproc`'
+ONBUILD RUN bundle install --local --jobs `nproc`
 
 # Copy the rest of the application source
 ONBUILD COPY . /usr/src/app
