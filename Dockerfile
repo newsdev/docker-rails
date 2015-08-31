@@ -37,7 +37,7 @@ ONBUILD RUN bundle install --local
 ONBUILD COPY . /usr/src/app
 
 # Run the requirejs optimizer if the badcom gem is included
-ONBUILD RUN RAILS_ENV=production ! gem list -i badcom || rake badcom:requirejs:optimize_all
+ONBUILD RUN RAILS_ENV=production if gem list -i badcom; then rake badcom:requirejs:optimize_all; fi
 
 # Precompile assets
 ONBUILD RUN RAILS_ENV=production rake assets:precompile
