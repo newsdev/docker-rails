@@ -1,6 +1,6 @@
 FROM ruby:2.2.3
 
-# Install MySQL library files
+# Install MySQL, XML, and XSLT library files
 RUN apt-get update && apt-get install -y \
   libmysqlclient-dev \
   libxml2 \
@@ -13,14 +13,16 @@ RUN \
   bundle config --global build.nokogiri --use-system-libraries 
 
 # Install node.js
-ENV NODE_VERSION=0.12.7
+ENV NODE_VERSION=4.0.0
+ENV NODE_SHASUM256=df8ada31840e3dc48c7fe7291c7eba70b2ce5a6b6d959ac01157b04731c8a88f
 RUN \
   cd /usr/local && \
   curl -fLO https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz && \
+  echo "${NODE_SHASUM256}  node-v$NODE_VERSION-linux-x64.tar.gz" | sha256sum -c - &&\
   tar --strip-components 1 -xzf node-v$NODE_VERSION-linux-x64.tar.gz node-v$NODE_VERSION-linux-x64/bin/node && \
   rm node-v$NODE_VERSION-linux-x64.tar.gz
 
-# Install node.js
+# Install kubernetes-secret-env
 ENV KUBERNETES_SECRET_ENV_VERSION=0.0.1-rc0
 RUN \
   mkdir -p /etc/secret-volume && \
