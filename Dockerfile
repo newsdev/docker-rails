@@ -13,8 +13,8 @@ RUN \
   bundle config --global build.nokogiri --use-system-libraries 
 
 # Install node.js
-ENV NODE_VERSION=4.0.0
-ENV NODE_SHASUM256=df8ada31840e3dc48c7fe7291c7eba70b2ce5a6b6d959ac01157b04731c8a88f
+ENV NODE_VERSION=4.1.0
+ENV NODE_SHASUM256=7c6055e08127143d9a8f779aa56f3fe42035fff8843c2652b0b2726204556382
 RUN \
   cd /usr/local && \
   curl -fLO https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz && \
