@@ -13,8 +13,8 @@ RUN \
   bundle config --global build.nokogiri --use-system-libraries 
 
 # Install node.js
-ENV NODE_VERSION=4.1.0
-ENV NODE_SHASUM256=7c6055e08127143d9a8f779aa56f3fe42035fff8843c2652b0b2726204556382
+ENV NODE_VERSION=4.1.1
+ENV NODE_SHASUM256=f5f7e11a503c997486d50d8683741a554bdda1d1181125a05ac5844cb29d1572
 RUN \
   cd /usr/local && \
   curl -fLO https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz && \
@@ -49,4 +49,5 @@ ONBUILD RUN \
 
 # Run the server
 ONBUILD EXPOSE 3000
-ONBUILD CMD ["kubernetes-secret-env", "puma", "-t", "16:16", "-p", "3000"]
+ONBUILD ENTRYPOINT ["kubernetes-secret-env"]
+ONBUILD CMD ["puma", "-t", "16:16", "-p", "3000"]
