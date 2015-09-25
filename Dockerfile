@@ -2,6 +2,7 @@ FROM ruby:2.2.3
 
 # Install MySQL, XML, and XSLT library files
 RUN apt-get update && apt-get install -y \
+  cmake \
   libmysqlclient-dev \
   libxml2 \
   libxslt1.1 \
