@@ -1,17 +1,23 @@
 FROM ruby:2.2.3
 
-# Install MySQL, XML, and XSLT library files
-RUN apt-get update && apt-get install -y \
-  cmake \
-  libmysqlclient-dev \
-  libxml2 \
-  libxslt1.1 \
-  --no-install-recommends && rm -rf /var/lib/apt/lists/*
-
 # Configure bundler
 RUN \
   bundle config --global frozen 1 && \
   bundle config --global build.nokogiri --use-system-libraries 
+
+# Install libssh2 from source.
+ENV LIBSSH2_VERSION=1.6.0
+RUN gpg --keyserver pgp.mit.edu --recv-keys 279D5C91 
+RUN \
+  curl -fLO http://www.libssh2.org/download/libssh2-$LIBSSH2_VERSION.tar.gz && \
+  curl -fLO http://www.libssh2.org/download/libssh2-$LIBSSH2_VERSION.tar.gz.asc && \
+  gpg --verify libssh2-$LIBSSH2_VERSION.tar.gz.asc && \
+  tar -xzf libssh2-$LIBSSH2_VERSION.tar.gz && \
+  cd libssh2-$LIBSSH2_VERSION && \
+  ./configure --with-openssl && \
+  make install && \
+  cd .. && \
+  rm -rf libssh2$-LIBSSH2_VERSION libssh2$-LIBSSH2_VERSION.asc
 
 # Install node.js
 ENV NODE_VERSION=4.1.2
