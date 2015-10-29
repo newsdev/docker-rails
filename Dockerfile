@@ -32,8 +32,8 @@ RUN \
   rm -r libssh2-$LIBSSH2_VERSION libssh2-$LIBSSH2_VERSION.* share/man/man3/libssh2_*
 
 # Install node.js
-ENV NODE_VERSION=4.2.1
-ENV NODE_SHASUM256=e766e387934e17daaad92d0460ed76f756655da62b627a5c9cc07faea4a0b824
+ENV NODE_VERSION=5.0.0
+ENV NODE_SHASUM256=ef73b59048a0ed11d01633f0061627b7a9879257deb9add2255e4d0808f8b671
 RUN \
   cd /usr/local && \
   curl -sfLO https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz && \
