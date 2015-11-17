@@ -6,9 +6,9 @@ RUN \
   bundle config --global build.nokogiri --use-system-libraries 
 
 # Install cmake
-ENV CMAKE_MAJOR=3.3
-ENV CMAKE_VERSION=3.3.2
-ENV CMAKE_SHASUM256=0c6e1d1dedf58b21f6bd3de9f03ca435c3d13c4e709b1d67432ca12df07d8208
+ENV CMAKE_MAJOR=3.4
+ENV CMAKE_VERSION=3.4.0
+ENV CMAKE_SHASUM256=36c275e5c143f61dc3978f0cf5502a848cfbc09f166a72a2db4427c6f05ab2aa
 RUN \
   cd /usr/local && \
   curl -sfLO https://cmake.org/files/v$CMAKE_MAJOR/cmake-$CMAKE_VERSION-Linux-x86_64.tar.gz && \
@@ -32,8 +32,8 @@ RUN \
   rm -r libssh2-$LIBSSH2_VERSION libssh2-$LIBSSH2_VERSION.* share/man/man3/libssh2_*
 
 # Install node.js
-ENV NODE_VERSION=5.0.0
-ENV NODE_SHASUM256=ef73b59048a0ed11d01633f0061627b7a9879257deb9add2255e4d0808f8b671
+ENV NODE_VERSION=5.1.0
+ENV NODE_SHASUM256=510e7a2e8639a3ea036f5f6a9f7a66037e3acf8d0c953aeac8d093dea7e41d4c
 RUN \
   cd /usr/local && \
   curl -sfLO https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz && \
