@@ -1,4 +1,4 @@
-FROM ruby:2.2.3
+FROM ruby:2.2.4
 
 # Configure bundler
 RUN \
@@ -32,8 +32,8 @@ RUN \
   rm -r libssh2-$LIBSSH2_VERSION libssh2-$LIBSSH2_VERSION.* share/man/man3/libssh2_*
 
 # Install node.js
-ENV NODE_VERSION=5.2.0
-ENV NODE_SHASUM256=7f31f5db97e1def61454d268d5206a6826385d157f444c21a36230a6c18f40d2
+ENV NODE_VERSION=5.3.0
+ENV NODE_SHASUM256=75b029b30d4a4147d67cf75bf6e034291fb5919c6935ec23f8365cee2d463f12
 RUN \
   cd /usr/local && \
   curl -sfLO https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz && \
