@@ -7,8 +7,8 @@ RUN \
 
 # Install cmake
 ENV CMAKE_MAJOR=3.4
-ENV CMAKE_VERSION=3.4.1
-ENV CMAKE_SHASUM256=6a5df90db8a6efc5242f21eff34c34bcf66e0da2981c6fc69860758f00aca5f1
+ENV CMAKE_VERSION=3.4.3
+ENV CMAKE_SHASUM256=66b8d315c852908be9f79e1a18b8778714659fce4ddb2d041af8680a239202fc
 RUN \
   cd /usr/local && \
   curl -sfLO https://cmake.org/files/v$CMAKE_MAJOR/cmake-$CMAKE_VERSION-Linux-x86_64.tar.gz && \
@@ -32,8 +32,8 @@ RUN \
   rm -r libssh2-$LIBSSH2_VERSION libssh2-$LIBSSH2_VERSION.* share/man/man3/libssh2_*
 
 # Install node.js
-ENV NODE_VERSION=5.4.0
-ENV NODE_SHASUM256=f037e2734f52b9de63e6d4a4e80756477b843e6f106e0be05591a16b71ec2bd0
+ENV NODE_VERSION=5.5.0
+ENV NODE_SHASUM256=3e593d91b6d2ad871efaaf8e9a17b3608ca98904959bcfb7c42e6acce89e80f4
 RUN \
   cd /usr/local && \
   curl -sfLO https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz && \
