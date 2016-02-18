@@ -69,4 +69,4 @@ ONBUILD RUN \
 # Run the server
 ONBUILD EXPOSE 3000
 ONBUILD ENTRYPOINT ["kubernetes-secret-env"]
-ONBUILD CMD ["puma", "-t", "16:16", "-p", "3000"]
+ONBUILD CMD ["puma", "-t", "8:8", "-p", "3000"]
