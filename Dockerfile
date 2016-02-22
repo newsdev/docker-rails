@@ -1,5 +1,8 @@
 FROM ruby:2.3.0
 
+# Define locale
+ENV LANG C.UTF-8
+
 # Configure bundler
 RUN \
   bundle config --global frozen 1 && \
