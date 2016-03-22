@@ -8,4 +8,4 @@ package|version
 [cmake](https://cmake.org/)|3.4.3
 [libssh](http://www.libssh2.org/)|1.6.0
 [node](https://nodejs.org/)|5.5.0
-[kubernetes-secret-env](https://github.com/buth/kubernetes-secret-env)|0.0.1-rc
+[kubernetes-secret-env](https://github.com/newsdev/kubernetes-secret-env)|0.0.1
