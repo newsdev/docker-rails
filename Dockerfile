@@ -35,7 +35,7 @@ RUN \
   rm -r libssh2-$LIBSSH2_VERSION libssh2-$LIBSSH2_VERSION.* share/man/man3/libssh2_*
 
 # Install node.js
-ENV NODE_VERSION=5.5.0
+ENV NODE_VERSION=6.9.5
 ENV NODE_SHASUM256=3e593d91b6d2ad871efaaf8e9a17b3608ca98904959bcfb7c42e6acce89e80f4
 RUN \
   cd /usr/local && \
