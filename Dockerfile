@@ -36,7 +36,7 @@ RUN \
 
 # Install node.js
 ENV NODE_VERSION=6.9.5
-ENV NODE_SHASUM256=3e593d91b6d2ad871efaaf8e9a17b3608ca98904959bcfb7c42e6acce89e80f4
+ENV NODE_SHASUM256=a4b464068cf2c2cc8ffba9ca0a6ee1ebf146509a86d46a4f92e761c31adebd29
 RUN \
   cd /usr/local && \
   curl -sfLO https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz && \
