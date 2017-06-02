@@ -59,7 +59,7 @@ ONBUILD COPY . /usr/src/app
 # Run the requirejs optimizer if the badcom gem is included and precompile assets.
 ONBUILD RUN \
   ! gem list -i badcom > /dev/null || RAILS_ENV=production RAILS_ASSETS_COMPILE=true rake badcom:requirejs:optimize_all && \
-  RAILS_ENV=production rake assets:precompile
+  RAILS_ENV=production RAILS_ASSETS_COMPILE=true rake assets:precompile
 
 # Run the server
 ONBUILD EXPOSE 3000
