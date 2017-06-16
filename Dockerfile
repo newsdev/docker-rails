@@ -1,4 +1,4 @@
-FROM ruby:2.3.3
+FROM ruby:2.4.1
 
 # Define locale
 ENV LANG C.UTF-8
@@ -35,8 +35,8 @@ RUN \
   rm -r libssh2-$LIBSSH2_VERSION libssh2-$LIBSSH2_VERSION.* share/man/man3/libssh2_*
 
 # Install node.js
-ENV NODE_VERSION=6.9.5
-ENV NODE_SHASUM256=a4b464068cf2c2cc8ffba9ca0a6ee1ebf146509a86d46a4f92e761c31adebd29
+ENV NODE_VERSION=8.1.2
+ENV NODE_SHASUM256=73b116238dd930efbed7c2f6ba24c5c04f27223fcc44d1d35305e22d70c4bb87
 RUN \
   cd /usr/local && \
   curl -sfLO https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz && \
@@ -44,9 +44,20 @@ RUN \
   tar --strip-components 1 -xzf node-v$NODE_VERSION-linux-x64.tar.gz node-v$NODE_VERSION-linux-x64/bin node-v$NODE_VERSION-linux-x64/include node-v$NODE_VERSION-linux-x64/lib && \
   rm node-v$NODE_VERSION-linux-x64.tar.gz
 
+# Install yarn
+RUN apt-get update && apt-get install -y apt-transport-https
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -\
+    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
+    && apt-get update \
+    && apt-get install -y yarn
+
 # Set the working directory
 ONBUILD RUN mkdir -p /usr/src/app
 ONBUILD WORKDIR /usr/src/app
+
+# Install NPMs
+ONBUILD COPY package.json* yarn.lock* .npmrc* /usr/src/app/
+ONBUILD RUN if [ -f package.json ]; then yarn install; fi;
 
 # Install gems
 ONBUILD COPY Gemfile Gemfile.lock /usr/src/app/
