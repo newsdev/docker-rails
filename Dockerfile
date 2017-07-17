@@ -57,7 +57,9 @@ ONBUILD WORKDIR /usr/src/app
 
 # Install NPMs
 ONBUILD COPY package.json* yarn.lock* .npmrc* /usr/src/app/
-ONBUILD RUN if [ -f package.json ]; then yarn install; fi;
+ONBUILD RUN if [ -f package.json ]; then \
+    yarn install || { echo "\033[0;31mMake sure you have run 'npm login' and have an ~/.npmrc file" && exit 1; }; \
+    fi;
 
 # Install gems
 ONBUILD COPY Gemfile Gemfile.lock /usr/src/app/
