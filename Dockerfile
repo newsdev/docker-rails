@@ -55,15 +55,16 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -\
 ONBUILD RUN mkdir -p /usr/src/app
 ONBUILD WORKDIR /usr/src/app
 
+# Copy dependency spec files
+ONBUILD COPY package.json* yarn.lock* .npmrc* Gemfile* /usr/src/app/
+
 # Install NPMs
-ONBUILD COPY package.json* yarn.lock* .npmrc* /usr/src/app/
 ONBUILD RUN if [ -f package.json ]; then \
     yarn install || { echo "\033[0;31mMake sure you have run 'npm login' and have an ~/.npmrc file" && exit 1; }; \
     rm -f .npmrc; \
     fi;
 
 # Install gems
-ONBUILD COPY Gemfile Gemfile.lock /usr/src/app/
 ONBUILD COPY vendor /usr/src/app/vendor
 ONBUILD RUN bundle install --local --jobs `nproc`
 
