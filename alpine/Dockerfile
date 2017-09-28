@@ -15,19 +15,20 @@ ONBUILD WORKDIR /usr/src/app
 # Install gems and node modules, using specified apk packages
 ONBUILD ARG BUILD_DEPENDENCIES
 ONBUILD ARG RUNTIME_DEPENDENCIES
+ONBUILD ARG BUNDLE_INSTALL_FLAGS
 
-ONBUILD COPY Gemfile Gemfile.lock package.json* yarn.lock* .npmrc* /usr/src/app/
+ONBUILD COPY Gemfile Gemfile.lock package.json* yarn.lock* .npmrc* .yarn* /usr/src/app/
 ONBUILD COPY vendor /usr/src/app/vendor
 
 ONBUILD RUN apk --update add --virtual .build-deps \
           build-base cmake $BUILD_DEPENDENCIES \
-      && apk add yarn --update-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
-      && apk add --no-cache \
-          curl-dev nodejs libxml2 libxslt-dev openssl \
+        && apk add yarn --update-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
+        && apk add --no-cache \
+          curl curl-dev nodejs libxml2 libxslt-dev openssl \
           $RUNTIME_DEPENDENCIES \
-      && bundle install --local --jobs `grep -c '^processor' /proc/cpuinfo` \
-      && yarn install \
-      && apk del .build-deps
+        && bundle install --without test development --jobs `grep -c '^processor' /proc/cpuinfo` $BUNDLE_INSTALL_FLAGS \
+        && yarn install --production \
+        && apk del .build-deps
 
 # Copy the rest of the application source
 ONBUILD COPY . /usr/src/app
