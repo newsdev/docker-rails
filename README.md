@@ -8,6 +8,11 @@
 
 The [Docker Rails](https://github.com/newsdev/docker-rails) with additions to support pronto gem for gitlab ci.
 
+## What is pronto?
+
+[A code review tool.](https://github.com/prontolabs/pronto)
+
+## Included Packages
 package|version
 :---|:---
 [ruby](https://www.ruby-lang.org/)|2.4.1
@@ -26,6 +31,7 @@ gem 'pronto-rails_best_practices', require: false
 gem 'pronto-rails_schema', require: false
 gem 'pronto-rubocop', require: false
 ```
+[More Runners](https://github.com/prontolabs/pronto#runners)
 
 ## Example `.gitlab-ci.yml`
 
