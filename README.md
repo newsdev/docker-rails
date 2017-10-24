@@ -1,4 +1,8 @@
-# Docer Rails with Pronto
+# Docer Rails with Pronto For Gitlab CI
+
+![Pronto messages posted to gitlab](https://raw.githubusercontent.com/muhammet/docker-rails/master/pronto_result_0.png)
+
+![Pronto started a discussion on commit](https://raw.githubusercontent.com/muhammet/docker-rails/master/pronto_result_1.png)
 
 The [Docker Rails](https://github.com/newsdev/docker-rails) with additions to support pronto gem for gitlab ci.
 
