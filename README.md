@@ -1,4 +1,4 @@
-# Docer Rails with Pronto For Gitlab CI
+# Docker Rails with Pronto For Gitlab CI
 
 ## What will happen?
 
