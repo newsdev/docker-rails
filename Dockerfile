@@ -64,6 +64,11 @@ ONBUILD RUN if [ -f package.json ]; then \
     rm -f .npmrc; \
     fi;
 
+# Install libgit2 for pronto gem
+RUN apt-get install -y wget
+RUN git clone https://github.com/libgit2/libgit2.git
+RUN cd libgit2 && mkdir build && cd build && cmake .. && cmake --build .
+
 # Install gems
 ONBUILD COPY vendor /usr/src/app/vendor
 ONBUILD RUN bundle install --local --jobs `nproc`
