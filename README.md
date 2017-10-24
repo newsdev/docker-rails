@@ -51,3 +51,8 @@ review:
 
 ```
 
+## Authors
+
+[Muhammet](https://github.com/muhammet)
+
+Many thanks to [@newsdev](https://github.com/newsdev) for [Docker Rails](https://github.com/newsdev/docker-rails) project.
