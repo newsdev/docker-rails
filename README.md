@@ -31,6 +31,7 @@ gem 'pronto-rails_best_practices', require: false
 gem 'pronto-rails_schema', require: false
 gem 'pronto-rubocop', require: false
 ```
+
 [More Runners](https://github.com/prontolabs/pronto#runners)
 
 ## Example `.gitlab-ci.yml`
@@ -63,6 +64,7 @@ review:
 
 ```
 
+**Note:** *If you get an error in GitLab runner like: Either installing with `--full-index` or running `bundle update i18n-tasks`* replace the `gem install bundler --no-ri --no-rdoc` line with `gem install bundler --no-ri --no-rdoc --version 1.14.6`
 
 
 ## Authors
