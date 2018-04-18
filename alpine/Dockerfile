@@ -1,4 +1,4 @@
-FROM ruby:2.4-alpine
+FROM ruby:2.5-alpine3.7
 
 # Define locale
 ENV LANG C.UTF-8
