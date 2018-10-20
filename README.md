@@ -18,7 +18,7 @@ package|version
 [ruby](https://www.ruby-lang.org/)|2.4.1
 [cmake](https://cmake.org/)|3.4.3
 [libssh](http://www.libssh2.org/)|1.6.0
-[node](https://nodejs.org/)|8.1.2
+[node](https://nodejs.org/)|~~8.1.2~~ 10.12.0
 [libgit2](https://github.com/libgit2/libgit2) | master
 
 ## Add pronto to your Gemfile
@@ -37,7 +37,8 @@ gem 'pronto-rubocop', require: false
 ## Example `.gitlab-ci.yml`
 
 ```
-image: "muhammet/docker-rails-with-pronto:latest"
+# image: "muhammet/docker-rails-with-pronto:latest" node v8.1.2
+image: "svtek/docker-rails-with-pronto:latest" # node v10.12.0
 services:
   - mysql:latest
   - redis:latest
