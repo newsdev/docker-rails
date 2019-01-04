@@ -20,19 +20,8 @@ RUN \
   rm cmake-$CMAKE_VERSION-Linux-x86_64.tar.gz
 
 # Install libssh2 from source
-ENV LIBSSH2_VERSION=1.6.0
-RUN gpg --keyserver pgp.mit.edu --recv-keys 279D5C91 
-RUN \
-  cd /usr/local && \
-  curl -sfLO http://www.libssh2.org/download/libssh2-$LIBSSH2_VERSION.tar.gz && \
-  curl -sfLO http://www.libssh2.org/download/libssh2-$LIBSSH2_VERSION.tar.gz.asc && \
-  gpg --verify libssh2-$LIBSSH2_VERSION.tar.gz.asc && \
-  tar -xzf libssh2-$LIBSSH2_VERSION.tar.gz && \
-  cd libssh2-$LIBSSH2_VERSION && \
-  ./configure --with-openssl --without-libgcrypt --with-libz && \
-  make install && \
-  cd .. && \
-  rm -r libssh2-$LIBSSH2_VERSION libssh2-$LIBSSH2_VERSION.* share/man/man3/libssh2_*
+RUN apt-get update && \
+    apt-get install -y git libssh2-1 libssh2-1-dev
 
 # Install node.js
 ENV NODE_VERSION=10.12.0
