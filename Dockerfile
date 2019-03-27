@@ -19,6 +19,7 @@ RUN \
   tar --strip-components 1 -xzf cmake-$CMAKE_VERSION-Linux-x86_64.tar.gz cmake-$CMAKE_VERSION-Linux-x86_64/bin/cmake cmake-$CMAKE_VERSION-Linux-x86_64/share/cmake-$CMAKE_MAJOR/Modules cmake-$CMAKE_VERSION-Linux-x86_64/share/cmake-$CMAKE_MAJOR/Templates && \
   rm cmake-$CMAKE_VERSION-Linux-x86_64.tar.gz
 
+RUN sed -i '/jessie-updates/d' /etc/apt/sources.list
 # Install libssh2 from source
 RUN apt-get update && \
     apt-get install -y git libssh2-1 libssh2-1-dev
