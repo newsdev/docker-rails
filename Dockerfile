@@ -1,4 +1,4 @@
-FROM ruby:2.4.1
+FROM ruby:2.6.3
 
 # Define locale
 ENV LANG C.UTF-8
