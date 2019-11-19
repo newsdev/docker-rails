@@ -1,4 +1,4 @@
-FROM ruby:2.5
+FROM ruby:2.5.7
 
 # Define locale
 ENV LANG C.UTF-8
@@ -9,8 +9,8 @@ RUN \
   bundle config --global build.nokogiri --use-system-libraries
 
 # Install node.js
-ENV NODE_VERSION=8.12.0
-ENV NODE_SHASUM256=3df19b748ee2b6dfe3a03448ebc6186a3a86aeab557018d77a0f7f3314594ef6
+ENV NODE_VERSION=8.16.2
+ENV NODE_SHASUM256=722d07291a8886384388c6795a747ec2055073f83dc73c0a97efba0022cc23ff
 RUN \
   cd /usr/local && \
   curl -sfLO https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz && \
